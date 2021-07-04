@@ -432,17 +432,13 @@ def main_menu():
         title_label = gameFont3.render("PRESS THE MOUSE TO BEGIN", 1, (255, 255, 255))
         WIN.blit (title_label, (WIDTH/2-title_label.get_width()/2, (HEIGHT/2-title_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height()))
 
-        testButton = button.Button(100, 200, testButton_img, 4)
-        if testButton.draw(WIN):
-            print ("pressed")
-
         pygame.display.update()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            #if event.type == pygame.MOUSEBUTTONDOWN:
-           #     main()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                main()
 
     pygame.quit()
 main_menu() #Runs game

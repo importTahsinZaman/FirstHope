@@ -10,7 +10,7 @@ pygame.display.set_icon(pygame.image.load(os.path.join("assets", "playerShip.png
 #import font initializer
 pygame.font.init()
 
-#create fonts (font name is press start 2p)
+#create fonts (font name is "press start 2p")
 gameFont1 = pygame.font.Font('gameFont.ttf', 150)
 gameFont2 = pygame.font.Font('gameFont.ttf', 60)
 gameFont3 = pygame.font.Font('gameFont.ttf', 50)
@@ -423,20 +423,40 @@ def main_menu():
     while run:
         WIN.blit(BG, (0,0))
 
+        #Title Label
         mainTitle_label = gameFont1.render("LAST HOPE", 1, (255,255,255))
         WIN.blit(mainTitle_label, (WIDTH / 2 - mainTitle_label.get_width() / 2, HEIGHT / 2 - mainTitle_label.get_height() / 2))
 
+        #Highscore Label
         highscore_label = gameFont3.render(f"HIGHSCORE: {check_highscore()} ", 1, (255, 255, 255))
         WIN.blit (highscore_label, (WIDTH/2-highscore_label.get_width()/2, (HEIGHT/2-highscore_label.get_height()/2)+mainTitle_label.get_height() - 30))
 
+        #Play Label
         play_label = gameFont3.render("PLAY", 1, (255, 255, 255))
         WIN.blit (play_label, (WIDTH/2-play_label.get_width()/2, (HEIGHT/2-play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height()))
 
+        #Play Button
         play_button_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (play_label.get_width(), play_label.get_height() - 10))
         play_button = button.Button((WIDTH/2-play_label.get_width()/2), ((HEIGHT/2-play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height()), play_button_picture, 1)
+        if play_button.draw(WIN): main()
 
-        if play_button.draw(WIN):
-            main()
+        #How To Play Label
+        how_to_play_label = gameFont3.render("How To Play", 1, (255, 255, 255))
+        WIN.blit (how_to_play_label, (WIDTH/2-how_to_play_label.get_width()/2, (HEIGHT/2-how_to_play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + 10))
+
+        #How To Play Button
+        how_to_play_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (how_to_play_label.get_width(), how_to_play_label.get_height() - 10))
+        how_to_play_button = button.Button ((WIDTH/2 - how_to_play_label.get_width()/2), ((HEIGHT/2- how_to_play_label.get_height()/2)+ mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height()+ 10), how_to_play_picture, 1)
+        if how_to_play_button.draw (WIN): main() #main() is a place holder for now
+
+        #About Label
+        About_label = gameFont3.render("About", 1, (255, 255, 255))
+        WIN.blit (About_label, (WIDTH/2-About_label.get_width()/2, (HEIGHT/2-About_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + how_to_play_label.get_height() + 15))
+
+        #About button
+        about_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (About_label.get_width(), About_label.get_height() - 10))
+        about_button = button.Button ((WIDTH/2 - About_label.get_width()/2), ((HEIGHT/2 - About_label.get_height()/2) + mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + how_to_play_label.get_height()+ 15), about_picture, 1)
+        if about_button.draw (WIN): main() #main () is a place holder for now
 
         pygame.display.update()
 

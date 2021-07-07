@@ -432,8 +432,8 @@ def main_menu():
         play_label = gameFont3.render("PLAY", 1, (255, 255, 255))
         WIN.blit (play_label, (WIDTH/2-play_label.get_width()/2, (HEIGHT/2-play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height()))
 
-        template_button = pygame.transform.scale(pygame.image.load('buttonTemplate.png').convert_alpha(), (play_label.get_width(), play_label.get_height() - 10))
-        play_button = button.Button((WIDTH/2-play_label.get_width()/2), ((HEIGHT/2-play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height()), template_button, 1)
+        play_button_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (play_label.get_width(), play_label.get_height() - 10))
+        play_button = button.Button((WIDTH/2-play_label.get_width()/2), ((HEIGHT/2-play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height()), play_button_picture, 1)
 
         if play_button.draw(WIN):
             main()
@@ -443,8 +443,6 @@ def main_menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
- #           if event.type == pygame.MOUSEBUTTONDOWN:
- #               main()
 
     pygame.quit()
 main_menu() #Runs game

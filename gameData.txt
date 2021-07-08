@@ -1,4 +1,4 @@
-highscore:8
-enemiesKilled:0
+highscore:34
+enemiesKilled:19
 firstOpen:0
 

@@ -19,11 +19,12 @@ gameFont1 = pygame.font.Font('gameFont.ttf', 150)
 gameFont2 = pygame.font.Font('gameFont.ttf', 60)
 gameFont3 = pygame.font.Font('gameFont.ttf', 50)
 gameFont4 = pygame.font.Font('gameFont.ttf', 90)
+gameFont5 = pygame.font.Font ('gameFont.ttf', 40)
 
 #Setting app width/height and title
 WIDTH, HEIGHT = 1600, 1000
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Survivor")
+pygame.display.set_caption("First Hope")
 
 #Enemy Ships
 GREEN_SPACE_SHIP = pygame.image.load(os.path.join("assets", "greenEnemy.png"))
@@ -52,9 +53,6 @@ pygame.mixer.init()
 
 #Sound effects
 laser_sound = pygame.mixer.Sound('laserSound.mp3')
-
-#Buttons
-testButton_img = pygame.image.load(os.path.join("assets", "testButton.png")).convert_alpha()
 
 #Powerup Class
 class Powerup:
@@ -310,8 +308,10 @@ def main ():
             lost = True
             lost_count += 1
 
+
         if lost:                                #goes back to main menu when player loses
             if lost_count > FPS * 1.5:
+                writeFile ('gameData.txt', 'enemiesKilled', readFile('gameData.txt', 'enemiesKilled') + player.points)
                 if player.points > readFile('gameData.txt', 'highscore'):
                     writeFile('gameData.txt', 'highscore', player.points)
                 run = False
@@ -487,6 +487,8 @@ def space_logs_screen ():
         information_label11 = gameFont3.render("----------------------------", 1, (white_color))
         WIN.blit(information_label11, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() + 80))
 
+        information_label12 = gameFont5.render (f"Enemies Killed: {readFile('gameData.txt', 'enemiesKilled')}", 1, (white_color))
+        WIN.blit(information_label12, (WIDTH - information_label12.get_width(), HEIGHT - 40))
 
 
         #Main Menu Label

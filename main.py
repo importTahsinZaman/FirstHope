@@ -509,9 +509,11 @@ def space_logs_screen ():
         else:
             information_label11 = gameFont5.render("Aliens Massacre Humans", 1, (white_color))
             WIN.blit(information_label11, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() + 410))
+            information_label12 = gameFont5.render("You are humanity's first and only hope. Go forth and fight", 1, (white_color))
+            WIN.blit(information_label12, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() +information_label11.get_height()+ 410))
 
-        information_label12 = gameFont5.render (f"Data Samples Collected: {readFile('gameData.txt', 'enemiesKilled')}", 1, (white_color))
-        WIN.blit(information_label12, (WIDTH - information_label12.get_width(), HEIGHT - 40))
+        information_label13 = gameFont5.render (f"Data Samples Collected: {readFile('gameData.txt', 'enemiesKilled')}", 1, (white_color))
+        WIN.blit(information_label13, (WIDTH - information_label13.get_width(), HEIGHT - 40))
 
 
         #Main Menu Label

@@ -443,9 +443,14 @@ def space_logs_screen ():
     run = True
     while run:
         WIN.blit(BG, (0, 0))
-                                              #Prints this text:
-        information_label1 = gameFont5.render("Logs encrypted, must collect data from alien spacecrafts", 1, (white_color))
-        WIN.blit(information_label1, (30, 30))
+
+        if readFile('gameData.txt', 'enemiesKilled') < 750:
+                                                #Prints this text:
+            information_label1 = gameFont5.render("Logs encrypted, must collect data from alien spacecrafts", 1, (white_color))
+            WIN.blit(information_label1, (30, 30))
+        else:
+            information_label1 = gameFont5.render("", 1, (white_color))
+            WIN.blit(information_label1, (30, 1))
 
                                               #Writes this text:
         information_label2 = gameFont5.render("Year 2321. Earth Population: 12.1 billion:", 1, (white_color))
@@ -483,7 +488,7 @@ def space_logs_screen ():
             information_label7 = gameFont5.render("Human Intergalactic Travel", 1, (white_color))
             WIN.blit(information_label7, (30, information_label1.get_height() + information_label2.get_height() + information_label3.get_height()+ information_label4.get_height() + information_label5.get_height() + information_label6 .get_height() + 250))
 
-        information_label8 = gameFont5.render("Year 2351. Earth population 1 million:", 1, (white_color))
+        information_label8 = gameFont5.render("Year 2351. Earth population 12.7 billion:", 1, (white_color))
         WIN.blit(information_label8, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + 290))
 
         if readFile('gameData.txt', 'enemiesKilled') < 600:
@@ -491,10 +496,10 @@ def space_logs_screen ():
             information_label9 = gameFont5.render(f"--------------   [{600 - readFile('gameData.txt', 'enemiesKilled')} Data samples required to decrypt]", 1, (white_color))
             WIN.blit(information_label9, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + 330))
         else:
-            information_label9 = gameFont5.render("Alien Queen Killed by Humans", 1, (white_color))
+            information_label9 = gameFont5.render("Humans kill Alien Queen", 1, (white_color))
             WIN.blit(information_label9, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + 330))
 
-        information_label10 = gameFont5.render("Year 2354. Earth population 300 Thousand:", 1, (white_color))
+        information_label10 = gameFont5.render("Year 2354. Earth population 1 million:", 1, (white_color))
         WIN.blit(information_label10, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + 370))
 
         if readFile('gameData.txt', 'enemiesKilled') < 750:
@@ -505,7 +510,7 @@ def space_logs_screen ():
             information_label11 = gameFont5.render("Aliens Massacre Humans", 1, (white_color))
             WIN.blit(information_label11, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() + 410))
 
-        information_label12 = gameFont5.render (f"Enemies Killed: {readFile('gameData.txt', 'enemiesKilled')}", 1, (white_color))
+        information_label12 = gameFont5.render (f"Data Samples Collected: {readFile('gameData.txt', 'enemiesKilled')}", 1, (white_color))
         WIN.blit(information_label12, (WIDTH - information_label12.get_width(), HEIGHT - 40))
 
 

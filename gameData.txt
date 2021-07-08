@@ -1,4 +1,4 @@
 highscore:136
-enemiesKilled:751
+enemiesKilled:785
 firstOpen:0
 

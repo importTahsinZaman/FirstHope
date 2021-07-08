@@ -7,7 +7,7 @@ def readFile (fileName, seekInfo): #looks in the file (fileName) and returns inf
     return int(information)
 
 
-def writeFile (fileName, valueName, writeValue):
+def writeFile (fileName, valueName, writeValue): #looks in the file (fileName) for the specified value (valueName) and writes the new value (writeValue) to that value
     with open (fileName, 'r+') as file:
         list_of_lines = file.readlines()
         file.seek(0)

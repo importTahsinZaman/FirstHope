@@ -3,7 +3,7 @@ import pygame
 import os
 import random
 import button
-from fileReader import readFile
+from fileReaderWriter import *
 
 #Game Icon:
 pygame.display.set_icon(pygame.image.load(os.path.join("assets", "playerShip.png")))
@@ -310,11 +310,10 @@ def main ():
             lost = True
             lost_count += 1
 
-        if lost:                                #Closes game when the player loses
-            if lost_count > FPS * 3:
+        if lost:                                #goes back to main menu when player loses
+            if lost_count > FPS * 1.5:
                 if player.points > readFile('gameData.txt', 'highscore'):
-                    with open ('gameData.txt', 'r+') as file:
-                        file.write (str(player.points))
+                    writeFile('gameData.txt', 'highscore', player.points)
                 run = False
                 main_menu()
             else:
@@ -406,9 +405,6 @@ def main ():
             player.cooldownTimer = 30
         elif player.cooldown_powerup_timer_counter > 0:
             player.cooldown_powerup_timer_counter += 1
-
-        #Temporary Print statement to bug test game:
-        print (f"Player Speed:{player_vel}  Speed Cooldown: {player.speed_powerup_timer_counter}/{player.speed_powerup_timer}  Player cooldown: {player.cooldownTimer} Cooldown Powerup Cooldown: {player.cooldown_powerup_timer_counter}/{player.cooldown_powerup_timer}")
 
         player.move_lasers(-laser_vel, enemies)   #Moves player's laser
 
@@ -520,7 +516,7 @@ def main_menu():
         WIN.blit(BG, (0,0))
 
         #Title Label
-        mainTitle_label = gameFont1.render("LAST HOPE", 1, (white_color))
+        mainTitle_label = gameFont1.render("FIRST HOPE", 1, (white_color))
         WIN.blit(mainTitle_label, (WIDTH / 2 - mainTitle_label.get_width() / 2, HEIGHT / 2 - mainTitle_label.get_height() / 2))
 
         #Highscore Label

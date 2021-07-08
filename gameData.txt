@@ -1,2 +1,4 @@
-highscore:23
-testInfo:4
+highscore:8
+enemiesKilled:0
+firstOpen:0
+

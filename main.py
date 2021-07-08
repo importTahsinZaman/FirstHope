@@ -10,6 +10,9 @@ pygame.display.set_icon(pygame.image.load(os.path.join("assets", "playerShip.png
 #import font initializer
 pygame.font.init()
 
+#Font Color
+white_color = (255,255,255)
+
 #create fonts (font name is "press start 2p")
 gameFont1 = pygame.font.Font('gameFont.ttf', 150)
 gameFont2 = pygame.font.Font('gameFont.ttf', 60)
@@ -277,9 +280,9 @@ def main ():
         WIN.blit (BG, [0,-HEIGHT +i])
 
         #draw text
-        health_label = gameFont3.render(f"Health:{player.health}", 1, (255, 255, 255))  #Renders health label
-        level_label = gameFont3.render(f"Level:{level}", 1, (255, 255, 255))            #Renders level label
-        points_label = gameFont3.render(f"Points:{player.points}", 1, (255, 255, 255))  #Renders points label
+        health_label = gameFont3.render(f"Health:{player.health}", 1, (white_color))  #Renders health label
+        level_label = gameFont3.render(f"Level:{level}", 1, (white_color))            #Renders level label
+        points_label = gameFont3.render(f"Points:{player.points}", 1, (white_color))  #Renders points label
 
         WIN.blit(health_label, (10, 10))                                    #Displays player health
         WIN.blit(level_label, (WIDTH - level_label.get_width()-10, 10))     #Displays game level
@@ -294,7 +297,7 @@ def main ():
         player.draw(WIN)                        #Creates/draws the player
 
         if lost:                                #Loss message
-            lost_label = gameFont4.render ("SHIP DESTROYED", 1, (255,255,255))
+            lost_label = gameFont4.render ("SHIP DESTROYED", 1, (white_color))
             WIN.blit(lost_label, (WIDTH/2 - lost_label.get_width()/2, 350))
 
 
@@ -414,6 +417,37 @@ def main ():
 
         player.move_lasers(-laser_vel, enemies)   #Moves player's laser
 
+def howToPlayScreen ():
+    pygame.mixer.music.load('menuMusic.mp3')
+    pygame.mixer.music.play(-1)
+
+    run = True
+    while run:
+        WIN.blit(BG, (0, 0))
+                                             # Writes this text:
+        information_label1 = gameFont3.render("Press W,A,S,D to move up, left, down, and right.", 1, (white_color))
+        WIN.blit(information_label1, (30, 30))
+
+                                              #Writes this text:
+        information_label2 = gameFont3.render("Press spacebar to fire your weapon and destroy alien ships", 1, (white_color))
+        WIN.blit(information_label2, (30, information_label1.get_height() + 30))
+
+        #Main Menu Label
+        main_menu_label = gameFont3.render("Main Menu", 1, (white_color))
+        WIN.blit (main_menu_label, (WIDTH/2-main_menu_label.get_width()/2, HEIGHT- 55))
+
+        #Main Menu Button
+        main_menu_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (main_menu_label.get_width(), main_menu_label.get_height() - 10))
+        main_menu_button = button.Button(WIDTH/2-main_menu_label.get_width()/2, HEIGHT- 55, main_menu_picture, 1)
+        if main_menu_button.draw(WIN): main_menu()
+
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+    pygame.quit()
+
 #Function for main menu:
 def main_menu():
     pygame.mixer.music.load('menuMusic.mp3')
@@ -424,15 +458,15 @@ def main_menu():
         WIN.blit(BG, (0,0))
 
         #Title Label
-        mainTitle_label = gameFont1.render("LAST HOPE", 1, (255,255,255))
+        mainTitle_label = gameFont1.render("LAST HOPE", 1, (white_color))
         WIN.blit(mainTitle_label, (WIDTH / 2 - mainTitle_label.get_width() / 2, HEIGHT / 2 - mainTitle_label.get_height() / 2))
 
         #Highscore Label
-        highscore_label = gameFont3.render(f"HIGHSCORE: {check_highscore()} ", 1, (255, 255, 255))
+        highscore_label = gameFont3.render(f"HIGHSCORE: {check_highscore()} ", 1, (white_color))
         WIN.blit (highscore_label, (WIDTH/2-highscore_label.get_width()/2, (HEIGHT/2-highscore_label.get_height()/2)+mainTitle_label.get_height() - 30))
 
         #Play Label
-        play_label = gameFont3.render("PLAY", 1, (255, 255, 255))
+        play_label = gameFont3.render("PLAY", 1, (white_color))
         WIN.blit (play_label, (WIDTH/2-play_label.get_width()/2, (HEIGHT/2-play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height()))
 
         #Play Button
@@ -441,16 +475,16 @@ def main_menu():
         if play_button.draw(WIN): main()
 
         #How To Play Label
-        how_to_play_label = gameFont3.render("How To Play", 1, (255, 255, 255))
+        how_to_play_label = gameFont3.render("How To Play", 1, (white_color))
         WIN.blit (how_to_play_label, (WIDTH/2-how_to_play_label.get_width()/2, (HEIGHT/2-how_to_play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + 10))
 
         #How To Play Button
         how_to_play_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (how_to_play_label.get_width(), how_to_play_label.get_height() - 10))
         how_to_play_button = button.Button ((WIDTH/2 - how_to_play_label.get_width()/2), ((HEIGHT/2- how_to_play_label.get_height()/2)+ mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height()+ 10), how_to_play_picture, 1)
-        if how_to_play_button.draw (WIN): main() #main() is a place holder for now
+        if how_to_play_button.draw (WIN): howToPlayScreen()
 
         #About Label
-        About_label = gameFont3.render("About", 1, (255, 255, 255))
+        About_label = gameFont3.render("About", 1, (white_color))
         WIN.blit (About_label, (WIDTH/2-About_label.get_width()/2, (HEIGHT/2-About_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + how_to_play_label.get_height() + 15))
 
         #About button

@@ -3,6 +3,7 @@ import pygame
 import os
 import random
 import button
+from fileReader import readFile
 
 #Game Icon:
 pygame.display.set_icon(pygame.image.load(os.path.join("assets", "playerShip.png")))
@@ -216,12 +217,6 @@ class Enemy (Ship):
             self.lasers.append(laser)
             self.cool_down_counter = 1
 
-
-def check_highscore():
-    with open('highscore.txt', 'r') as file:
-        highscore = file.read().strip()
-    return int(highscore)
-
 #Collision function
 def collide (obj1, obj2):
     offset_x = obj2.x - obj1.x
@@ -317,8 +312,8 @@ def main ():
 
         if lost:                                #Closes game when the player loses
             if lost_count > FPS * 3:
-                if player.points > check_highscore():
-                    with open ('highscore.txt', 'r+') as file:
+                if player.points > readFile('gameData.txt', 'highscore'):
+                    with open ('gameData.txt', 'r+') as file:
                         file.write (str(player.points))
                 run = False
                 main_menu()
@@ -529,7 +524,7 @@ def main_menu():
         WIN.blit(mainTitle_label, (WIDTH / 2 - mainTitle_label.get_width() / 2, HEIGHT / 2 - mainTitle_label.get_height() / 2))
 
         #Highscore Label
-        highscore_label = gameFont3.render(f"HIGHSCORE: {check_highscore()} ", 1, (white_color))
+        highscore_label = gameFont3.render(f"HIGHSCORE: {readFile('gameData.txt', 'highscore')} ", 1, (white_color))
         WIN.blit (highscore_label, (WIDTH/2-highscore_label.get_width()/2, (HEIGHT/2-highscore_label.get_height()/2)+mainTitle_label.get_height() - 30))
 
         #Play Label

@@ -417,7 +417,7 @@ def main ():
 
         player.move_lasers(-laser_vel, enemies)   #Moves player's laser
 
-def howToPlayScreen ():
+def instructionsScreen ():
     pygame.mixer.music.load('menuMusic.mp3')
     pygame.mixer.music.play(-1)
 
@@ -448,6 +448,73 @@ def howToPlayScreen ():
 
     pygame.quit()
 
+def space_logs_screen ():
+    pygame.mixer.music.load('menuMusic.mp3')
+    pygame.mixer.music.play(-1)
+
+    run = True
+    while run:
+        WIN.blit(BG, (0, 0))
+                                              #Prints this text:
+        information_label1 = gameFont3.render("Logs encrypted, must collect data from alien spacecrafts", 1, (white_color))
+        WIN.blit(information_label1, (30, 30))
+
+                                              #Writes this text:
+        information_label2 = gameFont3.render("Year 2321. Earth Population: 12.1 billion", 1, (white_color))
+        WIN.blit(information_label2, (30, information_label1.get_height() + 80))
+
+                                              #Writes this text:
+        information_label3 = gameFont3.render("----------------------------", 1, (white_color))
+        WIN.blit(information_label3, (30, information_label1.get_height() + information_label2.get_height()+ 80))
+
+        information_label4 = gameFont3.render("Year 2331. Earth population: 12.2 billion", 1, (white_color))
+        WIN.blit(information_label4, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + 80))
+
+                                              #Writes this text:
+        information_label5 = gameFont3.render("----------------------------", 1, (white_color))
+        WIN.blit(information_label5, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + 80))
+
+                                              #Writes this text:
+        information_label6 = gameFont3.render("Year 2345. Earth population: 12.5 billion", 1, (white_color))
+        WIN.blit(information_label6, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + 80))
+
+                                              #Writes this text:
+        information_label7 = gameFont3.render("----------------------------", 1, (white_color))
+        WIN.blit(information_label7, (30, information_label1.get_height() + information_label2.get_height() + information_label3.get_height()+ information_label4.get_height() + information_label5.get_height() + information_label6 .get_height() + 80))
+
+        information_label8 = gameFont3.render("Year 2351. Earth population 1 million", 1, (white_color))
+        WIN.blit(information_label8, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + 80))
+
+                                              #Writes this text:
+        information_label9 = gameFont3.render("----------------------------", 1, (white_color))
+        WIN.blit(information_label9, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + 80))
+
+        information_label10 = gameFont3.render("Year 2354. Earth population 300 Thousand", 1, (white_color))
+        WIN.blit(information_label10, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + 80))
+
+                                              #Writes this text:
+        information_label11 = gameFont3.render("----------------------------", 1, (white_color))
+        WIN.blit(information_label11, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() + 80))
+
+
+
+        #Main Menu Label
+        main_menu_label = gameFont3.render("Main Menu", 1, (white_color))
+        WIN.blit (main_menu_label, (WIDTH/2-main_menu_label.get_width()/2, HEIGHT- 55))
+
+        #Main Menu Button
+        main_menu_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (main_menu_label.get_width(), main_menu_label.get_height() - 10))
+        main_menu_button = button.Button(WIDTH/2-main_menu_label.get_width()/2, HEIGHT- 55, main_menu_picture, 1)
+        if main_menu_button.draw(WIN): main_menu()
+
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+    pygame.quit()
+
+
 #Function for main menu:
 def main_menu():
     pygame.mixer.music.load('menuMusic.mp3')
@@ -474,23 +541,23 @@ def main_menu():
         play_button = button.Button((WIDTH/2-play_label.get_width()/2), ((HEIGHT/2-play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height()), play_button_picture, 1)
         if play_button.draw(WIN): main()
 
-        #How To Play Label
-        how_to_play_label = gameFont3.render("How To Play", 1, (white_color))
-        WIN.blit (how_to_play_label, (WIDTH/2-how_to_play_label.get_width()/2, (HEIGHT/2-how_to_play_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + 10))
+        #Instructions Label
+        instructions_label = gameFont3.render("Instructions", 1, (white_color))
+        WIN.blit (instructions_label, (WIDTH/2-instructions_label.get_width()/2, (HEIGHT/2-instructions_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + 10))
 
-        #How To Play Button
-        how_to_play_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (how_to_play_label.get_width(), how_to_play_label.get_height() - 10))
-        how_to_play_button = button.Button ((WIDTH/2 - how_to_play_label.get_width()/2), ((HEIGHT/2- how_to_play_label.get_height()/2)+ mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height()+ 10), how_to_play_picture, 1)
-        if how_to_play_button.draw (WIN): howToPlayScreen()
+        #Instructions Button
+        instructions_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (instructions_label.get_width(), instructions_label.get_height() - 10))
+        instructions_button = button.Button ((WIDTH/2 - instructions_label.get_width()/2), ((HEIGHT/2- instructions_label.get_height()/2)+ mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height()+ 10), instructions_picture, 1)
+        if instructions_button.draw (WIN): instructionsScreen()
 
-        #About Label
-        About_label = gameFont3.render("About", 1, (white_color))
-        WIN.blit (About_label, (WIDTH/2-About_label.get_width()/2, (HEIGHT/2-About_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + how_to_play_label.get_height() + 15))
+        #Space Logs Label
+        space_logs_label = gameFont3.render("Space Logs", 1, (white_color))
+        WIN.blit (space_logs_label, (WIDTH/2-space_logs_label.get_width()/2, (HEIGHT/2-space_logs_label.get_height()/2)+mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + instructions_label.get_height() + 15))
 
-        #About button
-        about_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (About_label.get_width(), About_label.get_height() - 10))
-        about_button = button.Button ((WIDTH/2 - About_label.get_width()/2), ((HEIGHT/2 - About_label.get_height()/2) + mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + how_to_play_label.get_height()+ 15), about_picture, 1)
-        if about_button.draw (WIN): main() #main () is a place holder for now
+        #Space Logs button
+        space_logs_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (space_logs_label.get_width(), space_logs_label.get_height() - 10))
+        space_logs_button = button.Button ((WIDTH/2 - space_logs_label.get_width()/2), ((HEIGHT/2 - space_logs_label.get_height()/2) + mainTitle_label.get_height()+highscore_label.get_height() + play_label.get_height() + instructions_label.get_height()+ 18), space_logs_picture, 1)
+        if space_logs_button.draw (WIN): space_logs_screen() #main () is a place holder for now
 
         pygame.display.update()
 

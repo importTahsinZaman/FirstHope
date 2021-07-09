@@ -19,7 +19,7 @@ class Powerup:
         return self.powerup_img.get_height()
 
     def move(self, vel):
-        self.y += vel
+        self.y -= vel
 
     def off_screen(self, height):
         return not (self.y <= height and self.y >= 0)

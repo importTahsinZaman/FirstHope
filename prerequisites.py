@@ -38,9 +38,9 @@ GREEN_LASER = pygame.transform.scale(pygame.image.load(os.path.join("assets", "g
 PLAYER_LASER = pygame.image.load(os.path.join("assets", "playerLaser.png"))
 
 #Powerups
-HEALTHPOWERUP = pygame.image.load(os.path.join("assets", "healthPowerup.png"))
-SPEEDPOWERUP = pygame.image.load(os.path.join("assets", "speedPowerup.png"))
-COOLDOWNPOWERUP = pygame.image.load(os.path.join("assets", "cooldownPowerup.png"))
+HEALTHPOWERUP = pygame.transform.scale(pygame.image.load(os.path.join("assets", "healthPowerup.png")),(65,65))
+SPEEDPOWERUP = pygame.transform.scale(pygame.image.load(os.path.join("assets", "speedPowerup.png")),(65,65))
+COOLDOWNPOWERUP = pygame.transform.scale(pygame.image.load(os.path.join("assets", "cooldownPowerup.png")),(65,65))
 
 #Background
 BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "mainBackground.png")), (WIDTH, HEIGHT))

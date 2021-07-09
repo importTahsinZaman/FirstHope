@@ -14,7 +14,37 @@ def instructionsScreen ():
 
                                               #Writes this text:
         information_label2 = gameFont3.render("Press spacebar to fire your weapon and destroy alien ships", 1, (white_color))
-        WIN.blit(information_label2, (30, information_label1.get_height() + 30))
+        WIN.blit(information_label2, (30, information_label1.get_height() + 40))
+
+                                        # Writes this text:
+        information_label3 = gameFont3.render("Occasional ships with powerups will be sent to you", 1, (white_color))
+        WIN.blit(information_label3, (30, information_label1.get_height() + information_label2.get_height() +60))
+
+        information_label4 = gameFont3.render("Enemy Space Crafts:", 1, (white_color))
+        WIN.blit(information_label4, (30, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() +120))
+
+        WIN.blit(GREEN_SPACE_SHIP, (50,information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + 150))
+        WIN.blit(RED_SPACE_SHIP, (GREEN_SPACE_SHIP.get_width() + 70,information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + 150))
+        WIN.blit(PINK_SPACE_SHIP, (GREEN_SPACE_SHIP.get_width() + RED_SPACE_SHIP.get_width() + 85,information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + 150))
+
+        information_label5 = gameFont3.render("Powerups:", 1, (white_color))
+        WIN.blit(information_label5, (30, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() - 80))
+
+        WIN.blit(HEALTHPOWERUP, (115, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
+        information_label6 = gameFont5.render("+10 health", 1, (white_color))
+        WIN.blit(information_label6, (30, information_label1.get_height() + information_label2.get_height() + information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + HEALTHPOWERUP.get_height() + 20))
+
+        WIN.blit(SPEEDPOWERUP, (100 + HEALTHPOWERUP.get_width() + 170, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
+        information_label7 = gameFont5.render("+2 speed", 1, (white_color))
+        WIN.blit(information_label7, (30 + information_label6.get_width() + 25, information_label1.get_height() + information_label2.get_height() + information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + HEALTHPOWERUP.get_height() + 20))
+
+        WIN.blit(COOLDOWNPOWERUP, (100 + HEALTHPOWERUP.get_width() + 170 + SPEEDPOWERUP.get_width() + 250, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
+        information_label8 = gameFont5.render("-15 laser cooldown", 1, (white_color))
+        WIN.blit(information_label8, (30 + information_label6.get_width() + 25 + information_label7.get_width() + 30, information_label1.get_height() + information_label2.get_height() + information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + HEALTHPOWERUP.get_height() + 20))
+
+        information_label9 = gameFont5.render("Powerups last 15 seconds", 1 ,(white_color))
+        WIN.blit(information_label9, (155, HEIGHT - 200))
+
 
         #Main Menu Label
         main_menu_label = gameFont3.render("Main Menu", 1, (white_color))
@@ -52,7 +82,7 @@ def space_logs_screen ():
         if readFile('gameData.txt', 'enemiesKilled') < 150:
                                                 #Writes this text:
             information_label3 = gameFont5.render(f"--------------   [{150 - readFile('gameData.txt', 'enemiesKilled')} Data samples required to decrypt]", 1, (white_color))
-            WIN.blit(information_label3, (30, information_label1.get_height() + information_label2.get_height() +90))
+            WIN.blit(information_label3, (30, information_label1.get_height() + information_label2.get_height() +90)) #ALL THIS ADDITION STUFF IS FOR SPACING OUT THE TEXT PROPERLY
         else:
             information_label3 = gameFont5.render("Initial Alien Contact", 1, (white_color))
             WIN.blit(information_label3, (30, information_label1.get_height() + information_label2.get_height() +90))
@@ -148,7 +178,7 @@ def main ():
     elif level >= 9:
         powerups_max = 6
 
-    powerup_vel = 1
+    powerup_vel = 2
 
     healAmount = 10 #How much the health powerup heals for
     speedAmount = 2 #How much speed the speed powerup gives
@@ -172,7 +202,7 @@ def main ():
     pygame.mixer.music.play(-1)
 
 #Function for refreshing window
-    def redraw_window (i):
+    def redraw_window (i):  #Animated background, the i repsents the pixel of the background picture from which the background is going to be drawn. the i is decremented every loop
         WIN.blit (BG, [0, i])
         WIN.blit (BG, [0,-HEIGHT +i])
 
@@ -234,8 +264,8 @@ def main ():
 
         if len(powerups) == 0:                  #Spawns new powerups when all powerups are gone
 
-            for j in range(powerups_max):
-                powerup = Powerup(random.randrange(50, WIDTH-100), random.randrange(-1700, -1000), random.choice([HEALTHPOWERUP, SPEEDPOWERUP, COOLDOWNPOWERUP]))
+            for j in range(powerups_max):                                           #HEIGHT = 1000
+                powerup = Powerup(random.randrange(50, WIDTH-100), random.randrange(HEIGHT+1300,HEIGHT+1650), random.choice([HEALTHPOWERUP, SPEEDPOWERUP, COOLDOWNPOWERUP]))
                 powerups.append (powerup)
 
         for event in pygame.event.get():        #Closes the game when the x is pressed
@@ -298,7 +328,7 @@ def main ():
                     elif player.cooldownTimer == COOLDOWNTIMER - cooldownAmount:
                         powerups.remove(powerup)
 
-            elif powerup.y + powerup.get_height() > HEIGHT:                       #Checks if the powerup is going offscreen
+            elif powerup.y - powerup.get_height() < -60:                       #Checks if the powerup is going offscreen
                 powerups.remove(powerup)
 
         if player.speed_powerup_timer_counter >= player.speed_powerup_timer:      #Timer for speed powerup

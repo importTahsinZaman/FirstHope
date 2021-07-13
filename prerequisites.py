@@ -15,11 +15,11 @@ gameFont1 = pygame.font.Font('gameFont.ttf', 150)
 gameFont2 = pygame.font.Font('gameFont.ttf', 60)
 gameFont3 = pygame.font.Font('gameFont.ttf', 50)
 gameFont4 = pygame.font.Font('gameFont.ttf', 90)
-gameFont5 = pygame.font.Font ('gameFont.ttf', 40)
+gameFont5 = pygame.font.Font ('gameFont.ttf', 30)
 
 
 #Setting app width/height and title
-WIDTH, HEIGHT = 1600, 1000
+WIDTH, HEIGHT = 1200, 750
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("First Hope")
 

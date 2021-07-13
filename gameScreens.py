@@ -9,41 +9,41 @@ def instructionsScreen ():
     while run:
         WIN.blit(BG, (0, 0))
                                              # Writes this text:
-        information_label1 = gameFont3.render("Press W,A,S,D to move up, left, down, and right.", 1, (white_color))
+        information_label1 = gameFont5.render("Press W,A,S,D to move up, left, down, and right.", 1, (white_color))
         WIN.blit(information_label1, (30, 30))
 
                                               #Writes this text:
-        information_label2 = gameFont3.render("Press spacebar to fire your weapon and destroy alien ships", 1, (white_color))
+        information_label2 = gameFont5.render("Press spacebar to fire your weapon and destroy alien ships", 1, (white_color))
         WIN.blit(information_label2, (30, information_label1.get_height() + 40))
 
                                         # Writes this text:
-        information_label3 = gameFont3.render("Occasional ships with powerups will be sent to you", 1, (white_color))
+        information_label3 = gameFont5.render("Occasional ships with powerups will be sent to you", 1, (white_color))
         WIN.blit(information_label3, (30, information_label1.get_height() + information_label2.get_height() +60))
 
-        information_label4 = gameFont3.render("Enemy Space Crafts:", 1, (white_color))
+        information_label4 = gameFont5.render("Enemy Space Crafts:", 1, (white_color))
         WIN.blit(information_label4, (30, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() +120))
 
         WIN.blit(GREEN_SPACE_SHIP, (50,information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + 150))
         WIN.blit(RED_SPACE_SHIP, (GREEN_SPACE_SHIP.get_width() + 70,information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + 150))
         WIN.blit(PINK_SPACE_SHIP, (GREEN_SPACE_SHIP.get_width() + RED_SPACE_SHIP.get_width() + 85,information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + 150))
 
-        information_label5 = gameFont3.render("Powerups:", 1, (white_color))
+        information_label5 = gameFont5.render("Powerups:", 1, (white_color))
         WIN.blit(information_label5, (30, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() - 80))
 
-        WIN.blit(HEALTHPOWERUP, (115, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
+        WIN.blit(HEALTHPOWERUP, (80, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
         information_label6 = gameFont5.render("+10 health", 1, (white_color))
         WIN.blit(information_label6, (30, information_label1.get_height() + information_label2.get_height() + information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + HEALTHPOWERUP.get_height() + 20))
 
-        WIN.blit(SPEEDPOWERUP, (100 + HEALTHPOWERUP.get_width() + 170, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
+        WIN.blit(SPEEDPOWERUP, (25 + HEALTHPOWERUP.get_width() + 170, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
         information_label7 = gameFont5.render("+2 speed", 1, (white_color))
         WIN.blit(information_label7, (30 + information_label6.get_width() + 25, information_label1.get_height() + information_label2.get_height() + information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + HEALTHPOWERUP.get_height() + 20))
 
-        WIN.blit(COOLDOWNPOWERUP, (100 + HEALTHPOWERUP.get_width() + 170 + SPEEDPOWERUP.get_width() + 250, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
+        WIN.blit(COOLDOWNPOWERUP, (HEALTHPOWERUP.get_width() + 120 + SPEEDPOWERUP.get_width() + 250, information_label1.get_height() + information_label2.get_height() +information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + information_label5.get_height() - 50))
         information_label8 = gameFont5.render("-15 laser cooldown", 1, (white_color))
         WIN.blit(information_label8, (30 + information_label6.get_width() + 25 + information_label7.get_width() + 30, information_label1.get_height() + information_label2.get_height() + information_label3.get_height() + information_label4.get_height() + GREEN_SPACE_SHIP.get_height() + RED_SPACE_SHIP.get_height() + PINK_SPACE_SHIP.get_height() + HEALTHPOWERUP.get_height() + 20))
 
         information_label9 = gameFont5.render("Powerups last 15 seconds", 1 ,(white_color))
-        WIN.blit(information_label9, (155, HEIGHT - 200))
+        WIN.blit(information_label9, (30, HEIGHT - 50))
 
 
         #Main Menu Label
@@ -81,7 +81,7 @@ def space_logs_screen ():
 
         if readFile('gameData.txt', 'enemiesKilled') < 150:
                                                 #Writes this text:
-            information_label3 = gameFont5.render(f"--------------   [{150 - readFile('gameData.txt', 'enemiesKilled')} Data samples required to decrypt]", 1, (white_color))
+            information_label3 = gameFont5.render(f"--------------   [{150 - readFile('gameData.txt', 'enemiesKilled')} Data samples required ]", 1, (white_color))
             WIN.blit(information_label3, (30, information_label1.get_height() + information_label2.get_height() +90)) #ALL THIS ADDITION STUFF IS FOR SPACING OUT THE TEXT PROPERLY
         else:
             information_label3 = gameFont5.render("Initial Alien Contact", 1, (white_color))
@@ -92,7 +92,7 @@ def space_logs_screen ():
 
         if readFile('gameData.txt', 'enemiesKilled') < 300:
                                                 #Writes this text:
-            information_label5 = gameFont5.render(f"--------------   [{300 - readFile('gameData.txt', 'enemiesKilled')} Data samples required to decrypt]", 1, (white_color))
+            information_label5 = gameFont5.render(f"--------------   [{300 - readFile('gameData.txt', 'enemiesKilled')} Data samples required ]", 1, (white_color))
             WIN.blit(information_label5, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + 170))
         else:
             information_label5 = gameFont5.render("Alien Trade",1, (white_color))
@@ -104,7 +104,7 @@ def space_logs_screen ():
 
         if readFile('gameData.txt', 'enemiesKilled') < 450:
                                               #Writes this text:
-            information_label7 = gameFont5.render(f"--------------   [{450 - readFile('gameData.txt', 'enemiesKilled')} Data samples required to decrypt]", 1, (white_color))
+            information_label7 = gameFont5.render(f"--------------   [{450 - readFile('gameData.txt', 'enemiesKilled')} Data samples required ]", 1, (white_color))
             WIN.blit(information_label7, (30, information_label1.get_height() + information_label2.get_height() + information_label3.get_height()+ information_label4.get_height() + information_label5.get_height() + information_label6 .get_height() + 250))
         else:
                                               #Writes this text:
@@ -116,37 +116,36 @@ def space_logs_screen ():
 
         if readFile('gameData.txt', 'enemiesKilled') < 600:
                                                 #Writes this text:
-            information_label9 = gameFont5.render(f"--------------   [{600 - readFile('gameData.txt', 'enemiesKilled')} Data samples required to decrypt]", 1, (white_color))
-            WIN.blit(information_label9, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + 330))
+            information_label9 = gameFont5.render(f"--------------   [{600 - readFile('gameData.txt', 'enemiesKilled')} Data samples required ]", 1, (white_color))
+            WIN.blit(information_label9, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + 320))
         else:
             information_label9 = gameFont5.render("Humans kill Alien Queen", 1, (white_color))
-            WIN.blit(information_label9, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + 330))
+            WIN.blit(information_label9, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + 320))
 
         information_label10 = gameFont5.render("Year 2354. Earth population 1 million:", 1, (white_color))
-        WIN.blit(information_label10, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + 370))
+        WIN.blit(information_label10, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + 350))
 
         if readFile('gameData.txt', 'enemiesKilled') < 750:
                                                 #Writes this text:
-            information_label11 = gameFont5.render(f"--------------   [{750 - readFile('gameData.txt', 'enemiesKilled')} Data samples required to decrypt]", 1, (white_color))
-            WIN.blit(information_label11, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() + 410))
+            information_label11 = gameFont5.render(f"--------------   [{750 - readFile('gameData.txt', 'enemiesKilled')} Data samples required ]", 1, (white_color))
+            WIN.blit(information_label11, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() + 380))
         else:
             information_label11 = gameFont5.render("Aliens Massacre Humans", 1, (white_color))
-            WIN.blit(information_label11, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() + 410))
+            WIN.blit(information_label11, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() + 360))
             information_label12 = gameFont5.render("You are humanity's first and only hope. Go forth and fight", 1, (white_color))
-            WIN.blit(information_label12, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() +information_label11.get_height()+ 410))
-
-        information_label13 = gameFont5.render (f"Data Samples Collected: {readFile('gameData.txt', 'enemiesKilled')}", 1, (white_color))
-        WIN.blit(information_label13, (WIDTH - information_label13.get_width(), HEIGHT - 40))
-
+            WIN.blit(information_label12, (30, information_label1.get_height() + information_label2.get_height()+ information_label3.get_height() + information_label4.get_height() + information_label5.get_height() + information_label6.get_height() + information_label7.get_height() + information_label8.get_height() + information_label9.get_height() + information_label10.get_height() +information_label11.get_height()+ 370))
 
         #Main Menu Label
         main_menu_label = gameFont3.render("Main Menu", 1, (white_color))
-        WIN.blit (main_menu_label, (WIDTH/2-main_menu_label.get_width()/2, HEIGHT- 55))
+        WIN.blit (main_menu_label, (WIDTH-main_menu_label.get_width(), HEIGHT- 55))
 
         #Main Menu Button
         main_menu_picture = pygame.transform.scale(pygame.image.load('buttonPicture.png').convert_alpha(), (main_menu_label.get_width(), main_menu_label.get_height() - 10))
-        main_menu_button = button.Button(WIDTH/2-main_menu_label.get_width()/2, HEIGHT- 55, main_menu_picture, 1)
+        main_menu_button = button.Button(WIDTH-main_menu_label.get_width(), HEIGHT- 55, main_menu_picture, 1)
         if main_menu_button.draw(WIN): main_menu()
+
+        information_label13 = gameFont5.render (f"Data Samples Collected: {readFile('gameData.txt', 'enemiesKilled')}", 1, (white_color))
+        WIN.blit(information_label13, (WIDTH - information_label13.get_width(), HEIGHT - 40 - main_menu_label.get_height()))
 
         pygame.display.update()
         for event in pygame.event.get():

@@ -1,4 +1,4 @@
-highscore:0
-enemiesKilled:0
+highscore:140
+enemiesKilled:750
 
 
